@@ -9,9 +9,16 @@ fun main(args : Array<String>) {
     var a=1
     var b=2
     var max = a
+
+    // manera reducida
     if (a < b) max = b
 
-    // With else
+    // forma tradicional
+    if (a < b) {
+        max = b
+    }
+
+    // Con else
 
     if (a > b) {
         max = a
@@ -19,11 +26,11 @@ fun main(args : Array<String>) {
         max = b
     }
 
-    // As expression
+    // forma reducida con else devuelve valor
     max = if (a > b) a else b
     println(max)
 
-
+    // forma tradicional con else devuelve valor
     max = if (a > b) {
         println("Choose a")
         a
@@ -51,9 +58,12 @@ fun main(args : Array<String>) {
     }
     println("Parse Int")
     println("X:"+x)
+
+
     var s="1"
     x=2
     when (x) {
+        // comprobaciones en base a métodos
         parseInt(s) -> println("s encodes x")
         else -> println("s does not encode x")
     }

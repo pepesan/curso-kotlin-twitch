@@ -2,12 +2,14 @@ package com.cursosdedesarrollo.kotlin
 
 
 fun main(args : Array<String>) {
+    // definición cadena
     var s = "Hello, world!\n"
     println(s)
-
+    // concatenación
     s = "abc" + 1
     println(s)
 
+    // multiline
     s = """
     for (c in "foo")
         print(c)
@@ -25,6 +27,7 @@ fun main(args : Array<String>) {
     val i = 10
     println("i = $i") // prints "i = 10"
 
+    // interpolación
     s = "abc"
     println("$s.length is ${s.length}") // prints "abc.length is 3"
 

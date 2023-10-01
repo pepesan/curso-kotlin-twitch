@@ -2,9 +2,12 @@ package com.cursosdedesarrollo.kotlin
 
 
 fun main(args: Array<String>) {
+    // definir un array
     val x: IntArray = intArrayOf(1, 2, 3)
+    // Acceder a los valores del array
     x[0] = x[1] + x[2]
     println(x[0])
+    // uso de get y set
     println(x.get(0))
     x.set(0,2)
     println(x.get(0))
