@@ -82,7 +82,8 @@ open class Madre{
         this.nombre=nombre
     }
     override fun toString():String{
-        return "Madre[nombre:"+this.nombre+"]"
+        return "Madre[nombre:"+
+                this.nombre+"]"
     }
 }
 
@@ -96,31 +97,89 @@ class Hija: Madre {
         super.nombre=nombre
         this.herencia=""
     }
-    constructor(nombre:String,herencia:String){
+    constructor(
+        nombre:String,
+        herencia:String){
         super.nombre=nombre
         this.herencia=herencia
     }
     override fun toString():String{
-        return "Hija[herencia:"+this.herencia+",nombre:"+this.nombre+"]"
+        return "Hija[herencia:"+
+                this.herencia+
+                ",nombre:"+
+                this.nombre+"]"
     }
 }
 
 
 class Hija2: Madre  {
     var herencia:String? = null
-    constructor() : super(""){
+    constructor()
+            : super(""){
         this.herencia=""
     }
-    constructor(nombre:String) : super(nombre){
+    constructor(nombre:String)
+            : super(nombre){
         this.herencia=""
     }
-    constructor(nombre:String,herencia:String) : super (nombre){
+    constructor(
+        nombre:String,
+        herencia:String)
+            : super (nombre){
         this.herencia=herencia
     }
     override fun toString():String{
-        return "Hija[herencia:"+this.herencia+",nombre:"+this.nombre+"]"
+        return "Hija2[herencia:"+
+                this.herencia+
+                ",nombre:"+
+                this.nombre+"]"
     }
 }
+
+class Hija3: Madre  {
+    var herencia:String? = null
+
+    constructor(
+        nombre:String  = "",
+        herencia:String = ""):
+            super (nombre){
+        this.herencia=herencia
+    }
+    override fun toString():String{
+        return "Hija3[herencia:"+
+                this.herencia+
+                ",nombre:"+
+                this.nombre+"]"
+    }
+}
+
+
+
+class Hija4(
+    nombre: String = "",
+    herencia: String = "")
+        : Madre(nombre) {
+
+    private var herencia:String?
+        = herencia
+
+    fun getHerencia(): String?{
+        return this.herencia;
+    }
+
+    fun setHerencia(herencia: String){
+        this.herencia = herencia;
+    }
+    override fun toString():String{
+        return "Hija4[herencia:"+
+                this.herencia+
+                ",nombre:"+
+                this.nombre+"]"
+    }
+}
+
+
+// Ejemplos de Interfaces
 
 interface MyInterface {
     val prop: Int // abstract
@@ -233,17 +292,44 @@ fun main(args : Array<String>) {
 
 
     // Ejemplos de herencia
-    var padre=Madre("Pepe")
-    println(padre)
+    println("ejemplos de herencia")
+    val objetoMadre=Madre()
+    println(objetoMadre)
+    val objetoMadreParametro =
+        Madre("Maria")
+    println(objetoMadreParametro)
+
     var hija=Hija()
     println(hija)
     hija=Hija("Luisa")
     println(hija)
-    hija=Hija("Luisa","Total")
+    println(hija.nombre)
+    hija=Hija(
+        "Luisa",
+        "Total")
     println(hija)
-    var child=Child()
+    println(hija.nombre)
+    println(hija.herencia)
+
+    val hija2 = Hija()
+    println(hija2)
+
+    val hija4 = Hija4(
+        "Alicia",
+        "Parcial")
+    println(hija4)
+    println(hija4.nombre)
+    println(hija4.getHerencia())
+
+
+    val child=Child()
     child.foo()
     child.bar()
+
+
+
+
+
 
     val b = BaseImpl(10)
     Derived(b).print()
