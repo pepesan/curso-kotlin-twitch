@@ -196,17 +196,23 @@ class Child : MyInterface {
 }
 
 interface A {
-    fun foo() { print("A") }
+    fun foo() { println("A") }
     fun bar()
 }
 
 interface B {
-    fun foo() { print("B") }
-    fun bar() { print("bar") }
+    fun foo() { println("B") }
+    fun bar() { println("bar") }
 }
 
 class C : A {
-    override fun bar() { print("bar") }
+    override fun bar() {
+        println("bar")
+    }
+
+    fun imprimeAlgo(){
+        println("Algo")
+    }
 }
 
 class D : A, B {
@@ -221,15 +227,27 @@ class D : A, B {
 }
 
 
+// Ejemplo de delegación
 interface Base {
     fun print()
 }
 
-class BaseImpl(val x: Int) : Base {
-    override fun print() { print(x) }
+class BaseImpl(val x: Int)
+    : Base {
+    override fun print() {
+        println(x)
+    }
 }
 
-class Derived(b: Base) : Base by b
+class BaseImpl2(val x: Int)
+    : Base {
+    override fun print() {
+        println("algo:$x")
+    }
+}
+
+class Derived(b: Base)
+    : Base by b
 
 
 fun main(args : Array<String>) {
@@ -329,10 +347,41 @@ fun main(args : Array<String>) {
 
 
 
+    val miObjeto : MyInterface
+            = object : MyInterface {
+        override val prop: Int
+            get() = 23
 
+
+        override fun bar() {
+            print("Hace algo con bar")
+        }
+    }
+    println(miObjeto.prop)
+    miObjeto.bar()
+    miObjeto.foo()
+
+    // Ejemplo de uso de la clase Child
+
+    val objetoChild = Child()
+    println(objetoChild.prop)
+    objetoChild.foo()
+    objetoChild.bar()
+
+    val objetoC = C()
+    objetoC.bar()
+    objetoC.foo()
+    objetoC.imprimeAlgo()
+
+    val objetoD = D()
+    objetoD.foo()
+
+    // Ejemplo de uso de la delegación
 
     val b = BaseImpl(10)
     Derived(b).print()
+    val b2 = BaseImpl2(10)
+    Derived(b2).print()
 }
 
 
